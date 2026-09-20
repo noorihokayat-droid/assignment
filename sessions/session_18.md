@@ -100,13 +100,28 @@ WHERE rating > (
     (4, 102, 400.00, '2024-01-02'),
     (5, 102, 100.00, '2024-01-08');
 
-    SELECT
-    user_id,
-    transaction_date,
-    amount,
-    SUM(amount) OVER (
-    PARTITION BY user_id
-    ORDER BY transaction_date
-    ) AS running_total
-    FROM transactions;
+    SELECT user_id, transaction_date, amount, SUM(amount) OVER ( PARTITION BY user_id ORDER BY transaction_date ) AS running_total FROM transactions;
 ```
+
+![alt text](image-55.png)
+
+# TASK - 5 : List two optimizations you would apply to speed up a query that filters Flipkart products by category and price, and briefly explain how each helps.<br><br><em><strong>Hint:</strong> Think about indexes and query structure.</em>
+
+<h2>optimization 1 :Use Index </h2>
+
+**1.create index**
+
+```
+CREATE INDEX idx_category_price ON products(category, price);
+```
+- > Benefit: Speeds up searching and filtering on category and price.
+
+**2. Avoid SELECT(*)**
+
+```
+SELECT product_name, price
+FROM products
+WHERE category='Mobile'
+AND price < 20000;
+```
+- > Benefit: Retrieves only required columns, reducing data processing and improving performance.
