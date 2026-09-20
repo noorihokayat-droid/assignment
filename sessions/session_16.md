@@ -37,6 +37,8 @@ CREATE TABLE FoodOrders (
 
 ![alt text](image-47.png)
 
+![alt text](image-51.png)
+
 # task - 2 : Write SQL statements to create a table called TopSongs with columns: song_id, song_title, artist, streams, and release_date, then insert at least 5 records representing popular tracks from Spotify.
 
 ```
